@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import moc from "../Assets/Images/mens_outerwear_cover.jpg";
 import mtc from "../Assets/Images/mens_tshirts_cover.jpg";
 import loc from "../Assets/Images/ladies_outerwear_cover.jpg";
@@ -31,12 +31,13 @@ import lrcn from "../Assets/Images/Ladies Ringspun Crew Neck.jpg";
 const ALL_CATEGORIES = [
   {
     id: "mens_outerwear",
-    cover: { moc },
+    title: "Men's Outerwear",
+    cover: moc,
     clothes: [
       {
         id: "Men's Tech Shell Full-Zip",
         price: 50.2,
-        picture: { mtsfz },
+        picture: mtsfz,
         description:
           "A versatile full-zip that you can wear all day long and even to the gym. This technical shell features moisture-wicking fabric, added stretch and a hidden pocket for your smartphone or media player. ",
         features: [
@@ -50,7 +51,7 @@ const ALL_CATEGORIES = [
       {
         id: "Anvil L/S Crew Neck - Grey",
         price: 22.15,
-        picture: { alscn },
+        picture: alscn,
         description:
           "You'll be swooning over this crew neck as soon as you feel how soft it is. ",
         features: [
@@ -61,7 +62,7 @@ const ALL_CATEGORIES = [
       {
         id: "Green Flex Fleece Zip Hoodie",
         price: 46.65,
-        picture: { gffzh },
+        picture: gffzh,
         description:
           "Ultra soft. Ultra cozy. Our popular flex fleece hoodie now available in speckled green.  ",
         features: [
@@ -74,7 +75,7 @@ const ALL_CATEGORIES = [
       {
         id: "Android Nylon Packable Jacket",
         price: 33.6,
-        picture: { anpj },
+        picture: anpj,
         description:
           "Pack. Pack. Pack it up! This nylon jacket with reflective trim can literally be packed into itself in seconds. Features a waterproof nylon fabric, Android eyes & antennaes on the hood and a carrying strap when jacket is fully packed. Android robot is printed on back above zipper in a reflective, metallic finish.",
         features: [],
@@ -83,7 +84,7 @@ const ALL_CATEGORIES = [
       {
         id: "YouTube Ultimate Hooded Sweatshirt",
         price: 32.35,
-        picture: { yuhs },
+        picture: yuhs,
         description:
           "Stay warm in this cozy hoodie made of 50% cotton and 50% polyester. This comfortable design features set in sleeves, dyed to match draw cord and a front pouch pocket. Available in Charcoal with the full color YouTube logo screen printed across the chest. Unisex sizing.",
         features: [],
@@ -91,7 +92,7 @@ const ALL_CATEGORIES = [
       {
         id: "Grey Heather Fleece Zip Hoodie",
         price: 38.85,
-        picture: { ghfzh },
+        picture: ghfzh,
         description: "Cozy up with this full-zip hoodie. ",
         features: [
           "60% combed, ring-spun cotton, 40% polyester.",
@@ -106,12 +107,13 @@ const ALL_CATEGORIES = [
   },
   {
     id: "ladies_outerwear",
-    cover: { loc },
+    title: "Ladies Outerwear",
+    cover: loc,
     clothes: [
       {
         id: "Ladies Modern Stretch Full Zip",
         price: 41.6,
-        picture: { lmsfz },
+        picture: lmsfz,
         description:
           "With an updated fit and figure-flattering details, this full-zip combines ultra soft cotton with a dash of spandex to retain its shape all day long. ",
         features: [
@@ -127,7 +129,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Colorblock Wind Jacket",
         price: 45.9,
-        picture: { lcwj },
+        picture: lcwj,
         description:
           "Brighten up your commute on gloomy days. This lightweight jacket features a subtle grid texture and a punch of bright pink at each side panel.",
         features: [
@@ -141,7 +143,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Voyage Fleece Jacket",
         price: 48.0,
-        picture: { lvfj },
+        picture: lvfj,
         description:
           "Perhaps the equivalent to that comfort blanket you had years ago is a cozy fleece. This full-zip is the perfect layering piece for those 'in-between' months when mother nature just can't make up her mind. ",
         features: [
@@ -155,7 +157,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Pullover L/S Hood",
         price: 36.5,
-        picture: { lplsh },
+        picture: lplsh,
         description:
           "A longsleeve layering piece with a hood. What more can you ask for between season changes?  ",
         features: [
@@ -168,7 +170,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Sonoma Hybrid Knit Jacket",
         price: 84.85,
-        picture: { lshkj },
+        picture: lshkj,
         description:
           "A modern styled sport jacket that combines a classic silhouette with moisture-wicking fabrics. Technical features include a reversed coil zipper with reflective stripe, interior media exit port, and built-in media pocket.",
         features: [
@@ -179,7 +181,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Yerba Knit Quarter Zip",
         price: 64.2,
-        picture: { lykqz },
+        picture: lykqz,
         description: "This on-trend quarter zip doubles as workout gear. ",
         features: [
           "81% polyester, 19% spandex jersey knit.",
@@ -193,12 +195,13 @@ const ALL_CATEGORIES = [
   },
   {
     id: "mens_tshirts",
-    cover: { mtc },
+    title: "Men's T-shirts",
+    cover: mtc,
     clothes: [
       {
         id: "YouTube Organic Cotton T-Shirt - Grey",
         price: 14.75,
-        picture: { yoctg },
+        picture: yoctg,
         description:
           "Stay casual and cool in this 100% organic pre-shrunk cotton T-shirt. Available in charcoal grey with full-color YouTube logo screened on front.",
         features: [],
@@ -206,7 +209,7 @@ const ALL_CATEGORIES = [
       {
         id: "Inbox - Subtle Actions T-Shirt",
         price: 17.05,
-        picture: { isat },
+        picture: isat,
         description:
           "Sometimes even the subtlest of actions can make a big difference. This tee highlights all of the icons & features available in your Gmail inbox! ",
         features: [
@@ -217,7 +220,7 @@ const ALL_CATEGORIES = [
       {
         id: "Adult Android Superhero T-Shirt",
         price: 14.95,
-        picture: { aast },
+        picture: aast,
         description:
           "Mr. Kent has nothing on Super Droid, especially since this robot has only one weakness-a sweet tooth (considering all of its confectionery-themed versions)! This adorable Bella+Canvas tee features a unisex fit that is sure to please both male and female Android fans.",
         features: [
@@ -231,7 +234,7 @@ const ALL_CATEGORIES = [
       {
         id: "Men's Vintage Heather T-Shirt",
         price: 15.8,
-        picture: { mvht },
+        picture: mvht,
         description:
           "A casual-cool, vintage-inspired tee perfect for all. Just remember that the best part about any classic is that it only improves with age. The more you wash it, the softer it feels.   ",
         features: [
@@ -242,7 +245,7 @@ const ALL_CATEGORIES = [
       {
         id: "Basic Black T-Shirt",
         price: 16.9,
-        picture: { bbt },
+        picture: bbt,
         description:
           "Word on the street is that 'black is the new black.' Embellish your basic fashion statement with the Google logo on an authentic American Apparel t-shirt.           ",
         features: [
@@ -255,7 +258,7 @@ const ALL_CATEGORIES = [
       {
         id: "Local Guides T-Shirt",
         price: 15.7,
-        picture: { lgt },
+        picture: lgt,
         description:
           "Do you live to explore? Are you the first to tell your friends about the best venues, restaurants and hot spots in town? If you're already a local guide, sport your t-shirt with pride. This ultra soft style is comfortable enough to wear all day long - perfect for all of those adventures you'll tell us about later. To learn more about Local Guides, visit us here: https://www.google.com/local/guides/.        ",
         features: [
@@ -268,12 +271,13 @@ const ALL_CATEGORIES = [
   },
   {
     id: "ladies_tshirts",
-    cover: { ltc },
+    title: "Ladies T-shirts",
+    cover: ltc,
     clothes: [
       {
         id: "Ladies Chrome T-Shirt",
         price: 13.3,
-        picture: { lct },
+        picture: lct,
         description:
           "The best of three fabrics combined into one seductively-soft tee.  ",
         features: [
@@ -286,7 +290,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Google New York T-Shirt",
         price: 18.35,
-        picture: { lgnyt },
+        picture: lgnyt,
         description:
           "Are you feeling lucky? Inspired by city lights in The Big Apple, this tee features the 'I'm Feeling Lucky New York' phrase at back. ",
         features: [
@@ -299,7 +303,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Gmail T-Shirt",
         price: 16.4,
-        picture: { lgmt },
+        picture: lgmt,
         description:
           "Show your inbox some love. The new Gmail tee has arrived, complete with a subtle Mvelope design that showcases all of the Gmail icons you use on the daily.",
 
@@ -312,7 +316,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies G Logo White T-Shirt",
         price: 13.3,
-        picture: { lglwt },
+        picture: lglwt,
         description:
           "There's a new G in town and it's here to stay. Get your hands on this comfy white tee with the new Google icon. ",
         features: [
@@ -325,7 +329,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Android Pride T-Shirt",
         price: 19.1,
-        picture: { lapt },
+        picture: lapt,
         description: "Stand out proud in this Ladies' Android Pride T-shirt.",
         features: [
           "100% cotton.",
@@ -336,7 +340,7 @@ const ALL_CATEGORIES = [
       {
         id: "Ladies Ringspun Crew Neck",
         price: 19.7,
-        picture: { lrcn },
+        picture: lrcn,
         description:
           "Cheery colors make the world a happier place. This bright pink tee is ultra soft and features a comfortable, ladies fit.",
         features: [
@@ -349,3 +353,32 @@ const ALL_CATEGORIES = [
     ],
   },
 ];
+const INITIALSTATE = {
+  allCategories: ALL_CATEGORIES,
+  cartItems: [],
+  totalAmount: 0,
+  itemInCart: 0,
+};
+const cartSlice = createSlice({
+  name: "cartSlice",
+  initialState: INITIALSTATE,
+  reducers: {
+    addToCart(state, action) {
+      console.log(action.payload);
+      const category = state.allCategories.find(
+        (category) => category.id === action.payload.category.id
+      );
+      const cloth = category.clothes.find(
+        (cloth) => cloth.id === action.payload.cloth.id
+      );
+      state.cartItems.push(cloth);
+    },
+  },
+});
+
+const store = configureStore({
+  reducer: cartSlice.reducer,
+});
+
+export const cartSliceActions = cartSlice.actions;
+export default store;
