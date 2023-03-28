@@ -1,6 +1,5 @@
 import React from "react";
-import cartIcon from "../../Assets/Icon/cart-sharp.svg";
-import { Box, Image, Wrap, WrapItem, HStack, Heading } from "@chakra-ui/react";
+import { Box, Wrap, WrapItem } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Shop from "../Shop/Shop";
 

@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, VStack, Image, Text } from "@chakra-ui/react";
+import { Grid, GridItem, VStack, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -14,7 +14,7 @@ const Home = () => {
           photo={catergory.cover}
           name={catergory.title}
           link={catergory.id}
-          span={`${index == 0 || index == 1 ? "span 2" : ""}`}
+          span={`${index === 0 || index === 1 ? "span 2" : ""}`}
         />
       ))}
     </Grid>
