@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice, current } from "@reduxjs/toolkit";
 import moc from "../Assets/Images/mens_outerwear_cover.jpg";
 import mtc from "../Assets/Images/mens_tshirts_cover.jpg";
 import loc from "../Assets/Images/ladies_outerwear_cover.jpg";
@@ -364,14 +364,53 @@ const cartSlice = createSlice({
   initialState: INITIALSTATE,
   reducers: {
     addToCart(state, action) {
-      console.log(action.payload);
-      const category = state.allCategories.find(
-        (category) => category.id === action.payload.category.id
+      const useableState = current(state);
+      // const category = state.allCategories.find(
+      //   (category) => category.id === action.payload.category.id
+      // );
+
+      // const cloth = category.clothes.find(
+      //   (cloth) => cloth.id === action.payload.cloth.id
+      // );
+      const cloth = action.payload.cloth;
+      const updatedCloth = {
+        ...cloth,
+        size: action.payload.formDetails.size,
+        quantity: action.payload.formDetails.quantity,
+      };
+
+      // Checking if the cloth already exists in cart before pushing
+      const existingClothIndex = useableState.cartItems.findIndex(
+        (item) => item.id === cloth.id
       );
-      const cloth = category.clothes.find(
-        (cloth) => cloth.id === action.payload.cloth.id
+      if (existingClothIndex !== -1) {
+        const existingCloth = state.cartItems[existingClothIndex];
+        state.cartItems[existingClothIndex] = {
+          ...existingCloth,
+          quantity: existingCloth.quantity + updatedCloth.quantity,
+        };
+        state.totalAmount =
+          state.totalAmount + updatedCloth.quantity * updatedCloth.price;
+        state.itemInCart = state.itemInCart + updatedCloth.quantity;
+        return;
+      }
+      state.cartItems.push(updatedCloth);
+      state.itemInCart = state.itemInCart + updatedCloth.quantity;
+      state.totalAmount =
+        state.totalAmount + updatedCloth.quantity * updatedCloth.price;
+    },
+    removeFromCart(state, action) {
+      const usableState = current(state); // Why use current() here to access state? A MILLION DOLLAR QUESTION!!! Cos state always return a proxy, a confusing, non-editable, object.
+
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload.id
       );
-      state.cartItems.push(cloth);
+      const removedCloth = usableState.cartItems.find(
+        (cloth) => cloth.id === action.payload.id
+      );
+      state.itemInCart = state.itemInCart - removedCloth.quantity;
+      state.totalAmount =
+        state.totalAmount - removedCloth.quantity * removedCloth.price;
     },
   },
 });

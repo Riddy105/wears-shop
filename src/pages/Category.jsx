@@ -11,19 +11,19 @@ const Category = () => {
   const presentPathData = ALL_CATEGORIES.find(
     (category) => category.id === presentPath
   );
-  const transformTitle = (rawTitle) => {
-    const titleInLowerCase = rawTitle.split("_").join(" ");
-    const indexOfSpace = titleInLowerCase.indexOf(" ");
-    const titleInUpperCase =
-      titleInLowerCase[0].toUpperCase() +
-      titleInLowerCase.slice(1, indexOfSpace) +
-      " " +
-      titleInLowerCase[indexOfSpace + 1].toUpperCase() +
-      titleInLowerCase.slice(indexOfSpace + 2);
-    return titleInUpperCase;
-  };
+  // const transformTitle = (rawTitle) => {
+  //   const titleInLowerCase = rawTitle.split("_").join(" ");
+  //   const indexOfSpace = titleInLowerCase.indexOf(" ");
+  //   const titleInUpperCase =
+  //     titleInLowerCase[0].toUpperCase() +
+  //     titleInLowerCase.slice(1, indexOfSpace) +
+  //     " " +
+  //     titleInLowerCase[indexOfSpace + 1].toUpperCase() +
+  //     titleInLowerCase.slice(indexOfSpace + 2);
+  //   return titleInUpperCase;
+  // };
 
-  const transformedTitle = transformTitle(presentPathData.id); // transforming the id of the cloth category to a Capitalized Header for didplay on screen. i.e mens_category to Mens Category
+  // const transformedTitle = transformTitle(presentPathData.id); // transforming the id of the cloth category to a Capitalized Header for didplay on screen. i.e mens_category to Mens Category
 
   return (
     <Box as="section">
@@ -35,6 +35,7 @@ const Category = () => {
       <Grid
         templateColumns={["repeat(2, 1fr)", null, "repeat(3, 1fr)"]}
         justifyItems="center"
+        rowGap={["0", null, "20"]}
       >
         {presentPathData.clothes.map((cloth) => (
           <IndividualCloth

@@ -2,22 +2,14 @@ import React from "react";
 import cartIcon from "../../Assets/Icon/cart-sharp.svg";
 import { Box, Image, Wrap, WrapItem, HStack, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Shop from "../Shop/Shop";
 
 const Header = () => {
   // const [fixNav, setFixNav] = useState(false);
   window.addEventListener("scroll", () => {});
   return (
-    <Box as="header" p="5">
-      <HStack w="50%" ml="auto" justify="space-between">
-        <Link to="/">
-          <Heading fontWeight="semibold" color="grey.100">
-            SHOP
-          </Heading>
-        </Link>
-        <Link to="/cart">
-          <Image src={cartIcon} w="24px" h="24px"></Image>
-        </Link>
-      </HStack>
+    <Box as="header" py="5">
+      <Shop />
       <Wrap
         mt="8"
         spacing="6"
