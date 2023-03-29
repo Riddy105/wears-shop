@@ -7,7 +7,14 @@ import React from "react";
 const Home = () => {
   const ALL_CATEGORIES = useSelector((state) => state.allCategories);
   return (
-    <Grid as="section" templateColumns="1fr 1fr" rowGap="4" w="95%" mx="auto">
+    <Grid
+      as="section"
+      templateColumns="1fr 1fr"
+      rowGap="4"
+      columnGap={["4", null, "0"]}
+      w="95%"
+      mx="auto"
+    >
       {ALL_CATEGORIES.map((catergory, index) => (
         <Categories
           key={index}

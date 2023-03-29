@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header/Header";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 const Root = () => {
+  const { pathname } = useLocation();
+  console.log(pathname);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Header />

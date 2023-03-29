@@ -8,6 +8,14 @@ const CartItem = ({ picture, title, price, size, quantity }) => {
   const removeItemHandler = () => {
     dispatch(cartSliceActions.removeFromCart({ id: title }));
   };
+  const increamentItemHandler = (e) => {
+    dispatch(
+      cartSliceActions.increamentItem({
+        id: title,
+        value: Number(e.target.value),
+      })
+    );
+  };
   return (
     <Box
       display="grid"
@@ -28,7 +36,7 @@ const CartItem = ({ picture, title, price, size, quantity }) => {
       >
         <HStack>
           <Text>Qty:</Text>
-          <select defaultValue={quantity}>
+          <select defaultValue={quantity} onChange={increamentItemHandler}>
             {arr.map((number) => (
               <option key={number}>{number}</option>
             ))}

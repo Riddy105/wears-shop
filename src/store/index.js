@@ -393,24 +393,41 @@ const cartSlice = createSlice({
           state.totalAmount + updatedCloth.quantity * updatedCloth.price;
         state.itemInCart = state.itemInCart + updatedCloth.quantity;
         return;
+      } else {
+        state.cartItems.push(updatedCloth);
+        state.itemInCart = state.itemInCart + updatedCloth.quantity;
+        state.totalAmount =
+          state.totalAmount + updatedCloth.quantity * updatedCloth.price;
       }
-      state.cartItems.push(updatedCloth);
-      state.itemInCart = state.itemInCart + updatedCloth.quantity;
-      state.totalAmount =
-        state.totalAmount + updatedCloth.quantity * updatedCloth.price;
     },
     removeFromCart(state, action) {
-      const usableState = current(state); // Why use current() here to access state? A MILLION DOLLAR QUESTION!!! Cos state always return a proxy, a confusing, non-editable, object.
+      const useAbleState = current(state); // Why use current() here to access state? A MILLION DOLLAR QUESTION!!! Cos state always return a proxy, a confusing, non-editable, object.
 
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== action.payload.id
       );
-      const removedCloth = usableState.cartItems.find(
+      const removedCloth = useAbleState.cartItems.find(
         (cloth) => cloth.id === action.payload.id
       );
       state.itemInCart = state.itemInCart - removedCloth.quantity;
       state.totalAmount =
         state.totalAmount - removedCloth.quantity * removedCloth.price;
+    },
+    increamentItem(state, action) {
+      const useAbleState = current(state);
+      const itemToIncreamentIndex = useAbleState.cartItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const itemToIncreament = state.cartItems[itemToIncreamentIndex];
+      console.log(itemToIncreament);
+      state.totalAmount =
+        state.totalAmount +
+        (action.payload.value - itemToIncreament.quantity) *
+          itemToIncreament.price;
+      state.cartItems[itemToIncreamentIndex] = {
+        ...itemToIncreament,
+        quantity: action.payload.value,
+      };
     },
   },
 });
