@@ -419,15 +419,21 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       const itemToIncreament = state.cartItems[itemToIncreamentIndex];
-      console.log(itemToIncreament);
       state.totalAmount =
         state.totalAmount +
         (action.payload.value - itemToIncreament.quantity) *
           itemToIncreament.price;
+      state.itemInCart =
+        state.itemInCart + (action.payload.value - itemToIncreament.quantity);
       state.cartItems[itemToIncreamentIndex] = {
         ...itemToIncreament,
         quantity: action.payload.value,
       };
+    },
+    clearCart(state, action) {
+      state.cartItems = [];
+      state.itemInCart = 0;
+      state.totalAmount = 0;
     },
   },
 });

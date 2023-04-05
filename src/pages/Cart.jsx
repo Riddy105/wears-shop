@@ -35,7 +35,7 @@ const Cart = () => {
             alignItems="center"
           >
             <Text>{`Total: $ ${totalAmount.toFixed(2)}`}</Text>
-            <Link>
+            <Link to="/checkout">
               <Button border="1px solid #000" py=".5rem" w="10rem">
                 CHECKOUT
               </Button>

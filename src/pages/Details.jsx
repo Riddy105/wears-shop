@@ -45,7 +45,7 @@ const Details = () => {
       width={["90%", null, "70%"]}
       margin="3rem auto 0 auto"
       gap={["10", "20"]}
-      paddingBottom="3rem"
+      paddingBottom="5rem"
     >
       <Image src={cloth.picture}></Image>
       <Box>
@@ -116,7 +116,7 @@ const Details = () => {
             border="2px solid #000"
             width={["100%", null, "40%"]}
             textAlign="center"
-            background={["purple", null, "none"]}
+            background={["#172C50", null, "none"]}
             borderRadius="none"
             position={["fixed", null, "relative"]}
             bottom="0"

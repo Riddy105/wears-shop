@@ -5,6 +5,7 @@ import Root from "./pages/Root";
 import Category from "./pages/Category";
 import Details from "./pages/Details";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 const route = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const route = createBrowserRouter([
   },
 
   { path: "/cart", element: <Cart /> },
+  { path: "/checkout", element: <Checkout /> },
 ]);
 const theme = extendTheme({
   colors: {
@@ -30,6 +32,9 @@ const theme = extendTheme({
     },
     black: {
       50: "#202020",
+    },
+    blue: {
+      50: "#172C50",
     },
   },
   styles: {
@@ -47,6 +52,10 @@ const theme = extendTheme({
       },
       ".div": {
         backgroundColor: "Yellow",
+      },
+      ".country, .month, .year": {
+        width: "100%",
+        borderBottom: "1px solid #ddd",
       },
     },
   },
