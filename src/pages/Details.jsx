@@ -39,97 +39,112 @@ const Details = () => {
     });
   };
   return (
-    <Grid
-      as="section"
-      templateColumns={["1fr", null, "1fr 1fr"]}
-      width={["90%", null, "70%"]}
-      margin="3rem auto 0 auto"
-      gap={["10", "20"]}
-      paddingBottom="5rem"
-    >
-      <Image src={cloth.picture}></Image>
-      <Box>
-        <Heading color="black.50" fontSize="2xl" marginBottom=".5rem">
-          {cloth.id}
-        </Heading>
-        <Text color="grey.50">{`$ ${cloth.price}`}</Text>
-        <Box margin="3rem 0">
-          <HStack
-            borderTop="1px solid #ccc"
-            borderBottom="1px solid #ccc"
-            padding=".3rem 0"
-          >
-            <label className="sizes-label">Sizes</label>
-            <select
-              defaultValue="M"
-              className="sizes"
-              onChange={sizeChangeHandler}
-            >
-              {sizes.map((size, index) => (
-                <option key={index}>{size}</option>
-              ))}
-            </select>
-          </HStack>
-          <HStack borderBottom="1px solid #ccc" padding=".3rem 0">
-            <label color="grey.50">Quantity</label>
-            <select
-              defaultValue="1"
-              className="quantity"
-              onChange={quantityChangeHandler}
-            >
-              {sizes.map((size, index) => (
-                <option key={index}>{index + 1}</option>
-              ))}
-            </select>
-          </HStack>
-        </Box>
-        <Box as="article">
-          <Heading
-            fontSize="lg"
-            color="black.50"
-            fontWeight="medium"
-            marginBottom="1rem"
-          >
-            Description
+    <>
+      {/* <Link to=".." relative="path">
+        <Button
+          border="1px solid black"
+          py="2"
+          position="fixed"
+          top="5%"
+          left="5%"
+          background="none"
+          borderRadius="0"
+        >
+          Back
+        </Button>
+      </Link> */}
+      <Grid
+        as="section"
+        templateColumns={["1fr", null, "1fr 1fr"]}
+        width={["90%", null, "70%"]}
+        margin="3rem auto 0 auto"
+        gap={["10", "20"]}
+        paddingBottom="5rem"
+      >
+        <Image src={cloth.picture}></Image>
+        <Box>
+          <Heading color="black.50" fontSize="2xl" marginBottom=".5rem">
+            {cloth.id}
           </Heading>
-          <Text color="grey.50">{cloth.description}</Text>
+          <Text color="grey.50">{`$ ${cloth.price}`}</Text>
+          <Box margin="3rem 0">
+            <HStack
+              borderTop="1px solid #ccc"
+              borderBottom="1px solid #ccc"
+              padding=".3rem 0"
+            >
+              <label className="sizes-label">Sizes</label>
+              <select
+                defaultValue="M"
+                className="sizes"
+                onChange={sizeChangeHandler}
+              >
+                {sizes.map((size, index) => (
+                  <option key={index}>{size}</option>
+                ))}
+              </select>
+            </HStack>
+            <HStack borderBottom="1px solid #ccc" padding=".3rem 0">
+              <label color="grey.50">Quantity</label>
+              <select
+                defaultValue="1"
+                className="quantity"
+                onChange={quantityChangeHandler}
+              >
+                {sizes.map((size, index) => (
+                  <option key={index}>{index + 1}</option>
+                ))}
+              </select>
+            </HStack>
+          </Box>
+          <Box as="article">
+            <Heading
+              fontSize="lg"
+              color="black.50"
+              fontWeight="medium"
+              marginBottom="1rem"
+            >
+              Description
+            </Heading>
+            <Text color="grey.50">{cloth.description}</Text>
+          </Box>
+          <Box color="grey.50" margin="1rem 0">
+            {cloth.features.length > 0 && <Text>Features</Text>}
+            <VStack
+              as="ul"
+              listStyleType="disc"
+              gap=""
+              paddingLeft="2rem"
+              alignItems="flex-start"
+              margin="1rem 0 0 0"
+            >
+              {cloth.features.map((feature, index) => (
+                <Text as="li" key={index}>
+                  {feature}
+                </Text>
+              ))}
+            </VStack>
+          </Box>
+          <Link to="/cart">
+            <Button
+              border="2px solid #000"
+              width={["100%", null, "40%"]}
+              textAlign="center"
+              background={["#172C50", null, "none"]}
+              borderRadius="none"
+              position={["fixed", null, "relative"]}
+              bottom="0"
+              left="0"
+              color={["white", null, "black"]}
+              padding={["2rem 0", null, "0"]}
+              onClick={addToCartHandler}
+            >
+              ADD TO CART
+            </Button>
+          </Link>
         </Box>
-        <Box color="grey.50" margin="1rem 0">
-          {cloth.features.length > 0 && <Text>Features</Text>}
-          <VStack
-            as="ul"
-            listStyleType="disc"
-            gap=""
-            paddingLeft="2rem"
-            alignItems="flex-start"
-            margin="1rem 0 0 0"
-          >
-            {cloth.features.map((feature, index) => (
-              <Text as="li" key={index}>
-                {feature}
-              </Text>
-            ))}
-          </VStack>
-        </Box>
-        <Link to="/cart">
-          <Button
-            border="2px solid #000"
-            width={["100%", null, "40%"]}
-            textAlign="center"
-            background={["#172C50", null, "none"]}
-            borderRadius="none"
-            position={["fixed", null, "relative"]}
-            bottom="0"
-            left="0"
-            color={["white", null, "black"]}
-            padding={["2rem 0", null, "0"]}
-            onClick={addToCartHandler}
-          >
-            ADD TO CART
-          </Button>
-        </Link>
-      </Box>
-    </Grid>
+      </Grid>
+    </>
   );
 };
 

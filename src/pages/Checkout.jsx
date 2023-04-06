@@ -273,8 +273,8 @@ const Checkout = () => {
     <>
       <Shop />
       {submitted && <SuccessModal />}
-      <Text textAlign="center" fontWeight="bold" color="#f00" px="3">
-        This is a Demo app. Do not input your real financial details
+      <Text textAlign="center" fontWeight="bold" color="black.50" px="3">
+        This is a Demo app. Form data will not be sent
       </Text>
       <Grid
         as="form"
